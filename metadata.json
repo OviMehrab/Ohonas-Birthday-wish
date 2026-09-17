@@ -1,0 +1,7 @@
+{
+  "name": "Birthday Wish for Sayeada Ohona Islam",
+  "description": "An aesthetic, interactive birthday celebration website with scratch cards, letter envelope, photo memories, and wish clouds.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
