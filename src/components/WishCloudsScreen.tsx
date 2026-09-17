@@ -375,7 +375,7 @@ export const WishCloudsScreen: React.FC<WishCloudsScreenProps> = ({
         )}
 
         <p className="text-center text-[11px] text-pink-400 font-light">
-          Crafted with love for Sayeada Ohona Islam ✨
+          Crafted with love for Syeada Ohona Islam ✨
         </p>
       </div>
     </div>
