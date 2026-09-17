@@ -5,11 +5,13 @@ import { playSparkleSound, playPopSound } from '../utils/soundEffects';
 interface LetterScreenProps {
   birthdayGirlName: string;
   onContinue: () => void;
+  isEditMode?: boolean;
 }
 
 export const LetterScreen: React.FC<LetterScreenProps> = ({
   birthdayGirlName,
   onContinue,
+  isEditMode = false,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
@@ -102,14 +104,16 @@ export const LetterScreen: React.FC<LetterScreenProps> = ({
                   To My Dearest {birthdayGirlName}...
                 </h3>
 
-                <button
-                  onClick={() => setIsEditing(!isEditing)}
-                  className="text-[11px] text-pink-500 hover:text-pink-700 flex items-center gap-1 px-2 py-0.5 rounded-md hover:bg-pink-50 transition-colors"
-                  title="Customize letter"
-                >
-                  {isEditing ? <Check className="w-3 h-3 text-emerald-600" /> : <Edit3 className="w-3 h-3" />}
-                  <span>{isEditing ? 'Done' : 'Edit'}</span>
-                </button>
+                {isEditMode && (
+                  <button
+                    onClick={() => setIsEditing(!isEditing)}
+                    className="text-[11px] text-pink-500 hover:text-pink-700 flex items-center gap-1 px-2 py-0.5 rounded-md hover:bg-pink-50 transition-colors"
+                    title="Customize letter"
+                  >
+                    {isEditing ? <Check className="w-3 h-3 text-emerald-600" /> : <Edit3 className="w-3 h-3" />}
+                    <span>{isEditing ? 'Done' : 'Edit'}</span>
+                  </button>
+                )}
               </div>
 
               {/* Letter Body */}

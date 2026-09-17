@@ -6,6 +6,7 @@ import { playPopSound, playSparkleSound } from '../utils/soundEffects';
 interface CoreMemoriesScreenProps {
   birthdayGirlName: string;
   onContinue: () => void;
+  isEditMode?: boolean;
 }
 
 const DEFAULT_MEMORIES: MemoryItem[] = [
@@ -42,6 +43,7 @@ const DEFAULT_MEMORIES: MemoryItem[] = [
 export const CoreMemoriesScreen: React.FC<CoreMemoriesScreenProps> = ({
   birthdayGirlName,
   onContinue,
+  isEditMode = false,
 }) => {
   const [memories, setMemories] = useState<MemoryItem[]>(() => {
     try {
@@ -99,14 +101,16 @@ export const CoreMemoriesScreen: React.FC<CoreMemoriesScreenProps> = ({
 
   return (
     <div className="min-h-[85vh] flex flex-col items-center justify-between px-4 py-6 max-w-md mx-auto relative">
-      {/* Hidden file input for uploading Ohona's photos */}
-      <input
-        type="file"
-        ref={fileInputRef}
-        onChange={handleFileChange}
-        accept="image/*"
-        className="hidden"
-      />
+      {/* Hidden file input for uploading Ohona's photos (only available in edit mode) */}
+      {isEditMode && (
+        <input
+          type="file"
+          ref={fileInputRef}
+          onChange={handleFileChange}
+          accept="image/*"
+          className="hidden"
+        />
+      )}
 
       {/* Header */}
       <div className="text-center mb-6 w-full">
@@ -117,17 +121,19 @@ export const CoreMemoriesScreen: React.FC<CoreMemoriesScreenProps> = ({
           The moments that define us ✨
         </p>
 
-        {/* Helpful note for photo upload */}
-        <div className="mt-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-pink-100/70 border border-pink-200 text-pink-700 text-[11px]">
-          <Camera className="w-3 h-3 text-pink-500" />
-          <span>Tap the camera icon on any photo to upload Ohona's pictures</span>
-        </div>
+        {/* Helpful note for photo upload - ONLY visible to owner when isEditMode is true */}
+        {isEditMode && (
+          <div className="mt-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-pink-100/80 border border-pink-300 text-pink-700 text-[11px] shadow-xs">
+            <Camera className="w-3 h-3 text-pink-500" />
+            <span>Owner Mode: Tap "Change Photo" to upload Ohona's pictures</span>
+          </div>
+        )}
       </div>
 
       {/* Memories Stack (Vertical cards matching video) */}
       <div className="w-full space-y-6 my-2">
         {memories.map((mem) => {
-          const isEditing = activeEditingId === mem.id;
+          const isEditing = isEditMode && activeEditingId === mem.id;
           return (
             <div
               key={mem.id}
@@ -145,15 +151,17 @@ export const CoreMemoriesScreen: React.FC<CoreMemoriesScreenProps> = ({
                   className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-500"
                 />
 
-                {/* Upload / Replace Photo Button */}
-                <button
-                  onClick={() => handleUploadClick(mem.id)}
-                  className="absolute bottom-3 right-3 z-10 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/60 hover:bg-black/80 backdrop-blur-md text-white text-xs font-medium shadow-md transition-all cursor-pointer"
-                  title="Upload picture"
-                >
-                  <Upload className="w-3.5 h-3.5 text-pink-300" />
-                  <span>Change Photo</span>
-                </button>
+                {/* Upload / Replace Photo Button - STRICTLY ONLY VISIBLE IN EDIT MODE */}
+                {isEditMode && (
+                  <button
+                    onClick={() => handleUploadClick(mem.id)}
+                    className="absolute bottom-3 right-3 z-10 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/60 hover:bg-black/80 backdrop-blur-md text-white text-xs font-medium shadow-md transition-all cursor-pointer"
+                    title="Upload picture"
+                  >
+                    <Upload className="w-3.5 h-3.5 text-pink-300" />
+                    <span>Change Photo</span>
+                  </button>
+                )}
 
                 {/* Decorative sparkles */}
                 <div className="absolute top-3 left-3 bg-white/70 backdrop-blur-xs p-1 rounded-full">
@@ -205,12 +213,15 @@ export const CoreMemoriesScreen: React.FC<CoreMemoriesScreenProps> = ({
                       {mem.subtitle}
                     </p>
 
-                    <button
-                      onClick={() => setActiveEditingId(mem.id)}
-                      className="mt-2 text-[10px] text-pink-400 hover:text-pink-600 underline"
-                    >
-                      Edit Caption
-                    </button>
+                    {/* Edit Caption Button - ONLY VISIBLE IN EDIT MODE */}
+                    {isEditMode && (
+                      <button
+                        onClick={() => setActiveEditingId(mem.id)}
+                        className="mt-2 text-[10px] text-pink-400 hover:text-pink-600 underline"
+                      >
+                        Edit Caption
+                      </button>
+                    )}
                   </div>
                 )}
               </div>
