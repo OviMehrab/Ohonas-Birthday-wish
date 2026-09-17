@@ -128,10 +128,6 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
           </span>
         </h1>
 
-        <p className="text-xs sm:text-sm text-pink-800/70 max-w-xs mb-8 font-body leading-relaxed">
-          Stop sending boring texts on birthdays! Instead, step inside this little world created just for you ✨
-        </p>
-
         {/* Main interactive button */}
         <button
           id="open-wishes-btn"

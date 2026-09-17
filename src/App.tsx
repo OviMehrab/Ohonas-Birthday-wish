@@ -28,31 +28,38 @@ const STEPS: Step[] = ['welcome', 'scratch', 'letter', 'memories', 'clouds'];
 const INITIAL_MEMORIES: MemoryItem[] = [
   {
     id: 1,
-    title: 'First Hello',
-    yearOrTag: '2021',
-    subtitle: 'The day my world changed and we became instant soul sisters ✨',
-    imageUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80',
+    title: 'Where It Started',
+    yearOrTag: '2013',
+    subtitle: 'We met, became friends, and had no idea that this little beginning would turn into something that would last for years.',
+    imageUrl: '/photos/photo1.jpg',
   },
   {
     id: 2,
-    title: 'Best Adventure',
-    yearOrTag: '2022',
-    subtitle: 'Making endless magic together, laughing till our stomachs hurt 🚲',
-    imageUrl: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80',
+    title: 'The Memories We Made',
+    yearOrTag: 'School Days',
+    subtitle: 'School days, endless conversations, laughter, little secrets, and so many moments that became a part of our story.',
+    imageUrl: '/photos/photo2.jpg',
   },
   {
     id: 3,
-    title: 'Core Moment',
-    yearOrTag: '2023',
-    subtitle: 'Laughter, endless midnight talks, and unconditional support 🌸',
-    imageUrl: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80',
+    title: 'Growing Up',
+    yearOrTag: 'Through the Years',
+    subtitle: 'We grew older, changed, and entered different phases of life, but our friendship grew with us.',
+    imageUrl: '/photos/photo3.jpg',
   },
   {
     id: 4,
-    title: 'Celebrating You',
-    yearOrTag: 'Forever',
-    subtitle: 'To many more years of our beautiful friendship, Ohona! 🥂',
-    imageUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=80',
+    title: 'Through Every Chapter',
+    yearOrTag: 'Unbreakable Bond',
+    subtitle: 'Life kept changing and taking us in different directions, but somehow we always remained a part of each other’s lives.',
+    imageUrl: '/photos/photo4.jpg',
+  },
+  {
+    id: 5,
+    title: 'Still Us',
+    yearOrTag: 'Today',
+    subtitle: 'So much has changed since 2013, but after all these years, I’m still grateful to have you as my friend. 🤍',
+    imageUrl: '/photos/photo5.jpg',
   },
 ];
 
@@ -82,7 +89,7 @@ export default function App() {
 
   const [memories, setMemories] = useState<MemoryItem[]>(() => {
     try {
-      const saved = localStorage.getItem('ohona_birthday_memories');
+      const saved = localStorage.getItem('ohona_birthday_memories_v2');
       if (saved) return JSON.parse(saved);
     } catch (e) {}
     return INITIAL_MEMORIES;
@@ -341,7 +348,7 @@ export default function App() {
         onUpdateMemories={(updated) => {
           setMemories(updated);
           try {
-            localStorage.setItem('ohona_birthday_memories', JSON.stringify(updated));
+            localStorage.setItem('ohona_birthday_memories_v2', JSON.stringify(updated));
           } catch (e) {}
         }}
         birthdayGirlName={birthdayGirlName}

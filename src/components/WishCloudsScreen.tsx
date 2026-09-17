@@ -369,8 +369,8 @@ export const WishCloudsScreen: React.FC<WishCloudsScreenProps> = ({
         </div>
 
         {showCopiedToast && (
-          <p className="text-center text-xs text-pink-600 font-medium bg-pink-50 py-1 rounded-md border border-pink-200 animate-in fade-in">
-            Link copied! Send it to Ohona with all your love 💕
+          <p className="text-center text-xs text-pink-600 font-medium bg-pink-50 py-1.5 px-3 rounded-lg border border-pink-200 animate-in fade-in shadow-xs">
+            Link copied to clipboard! Share or revisit this anytime 💕
           </p>
         )}
 
