@@ -2,6 +2,49 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      (function() {
+        try {
+          var originalFetch = window.fetch;
+          var _fetch = typeof originalFetch === 'function' ? originalFetch.bind(window) : originalFetch;
+          Object.defineProperty(window, 'fetch', {
+            get: function() {
+              return _fetch;
+            },
+            set: function(val) {
+              _fetch = val;
+            },
+            configurable: true,
+            enumerable: true
+          });
+        } catch (e) {
+          try {
+            if (window.Window && window.Window.prototype) {
+              var protoFetch = window.Window.prototype.fetch;
+              var _protoFetch = typeof protoFetch === 'function' ? protoFetch.bind(window) : protoFetch;
+              Object.defineProperty(window.Window.prototype, 'fetch', {
+                get: function() {
+                  return _protoFetch;
+                },
+                set: function(val) {
+                  _protoFetch = val;
+                },
+                configurable: true,
+                enumerable: true
+              });
+            }
+          } catch (e2) {}
+        }
+
+        window.addEventListener('error', function(event) {
+          if (event && event.message && event.message.indexOf('fetch of #<Window> which has only a getter') !== -1) {
+            event.preventDefault();
+            event.stopPropagation();
+            return true;
+          }
+        }, true);
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Happy Birthday Sayeada Ohona Islam 💖</title>
     <meta name="description" content="A magical birthday wish experience for Sayeada Ohona Islam with love, memories, and surprises." />
