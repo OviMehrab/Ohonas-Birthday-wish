@@ -14,9 +14,9 @@ export const LetterScreen: React.FC<LetterScreenProps> = ({
   const [isOpen, setIsOpen] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [letterContent, setLetterContent] = useState(
-    `Happy Birthday, ${birthdayGirlName}! You are the reason behind my smiles and the peace in my heart. Every moment spent with you feels like floating on soft, pink clouds. May your year be filled with as much magic and love as you bring into my life. Forever and always, I'll be by your side 💕`
+    `Happy Birthday, my girl! 🤍\n\nSome people come into our lives and quietly become a very special part of it, and you’re definitely one of those people. I’m genuinely grateful for all the memories, laughter, conversations, and little moments we’ve shared.\n\nI hope this new year of your life brings you endless happiness, beautiful experiences, peace of mind, and everything your heart wishes for. May Allah always keep you safe, happy, and surrounded by good people. 🥹🤍\n\nNo matter how much life changes, I hope our friendship always stays the same. Love you and miss you! ❤️\n\nHappy Birthday once again, dear. 🫶`
   );
-  const [signoff, setSignoff] = useState('With all my love,\nYour Bestie & Soul Sister 🌸');
+  const [signoff, setSignoff] = useState('With all my love,\nYour dearest Friend 💝');
 
   const handleOpenEnvelope = () => {
     if (!isOpen) {
@@ -130,7 +130,7 @@ export const LetterScreen: React.FC<LetterScreenProps> = ({
                 </div>
               ) : (
                 <div className="space-y-4">
-                  <p className="font-serif-display text-sm sm:text-base leading-relaxed text-[#5c3e4f]">
+                  <p className="font-serif-display text-sm sm:text-base leading-relaxed text-[#5c3e4f] whitespace-pre-line">
                     {letterContent}
                   </p>
 

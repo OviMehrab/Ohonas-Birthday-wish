@@ -341,7 +341,7 @@ export const WishCloudsScreen: React.FC<WishCloudsScreenProps> = ({
       {/* Sweet heartfelt wish card from the video */}
       <div className="w-full bg-white/90 rounded-2xl p-5 shadow-sm border border-pink-100 text-center relative overflow-hidden">
         <p className="font-serif-display italic text-xs sm:text-sm text-[#6b4c5d] leading-relaxed mb-3">
-          "May every dream you have come true, and may I always be there to celebrate each one with you. You are my favorite everything."
+          "May every dream you have come true, and may I always be there to celebrate each one with you. You are my forever favorite. Happy Birthday Ohona"
         </p>
         <h3 className="font-handwriting text-2xl sm:text-3xl text-pink-600 font-bold tracking-wide">
           💖 Happy Birthday, {birthdayGirlName} 💖

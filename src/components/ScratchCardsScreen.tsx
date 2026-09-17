@@ -170,28 +170,28 @@ export const ScratchCardsScreen: React.FC<ScratchCardsScreenProps> = ({
   const [cards, setCards] = useState<CardItem[]>([
     {
       id: 1,
-      message: 'You are the most beautiful star in my sky. ✨',
+      message: 'No matter how much life changes, you’ll always have a special place in my heart. ✨',
       isRevealed: false,
       accent: 'pink',
       gradient: 'from-pink-100 to-rose-200',
     },
     {
       id: 2,
-      message: 'May your day be as sweet and soft as a cloud. ☁️',
+      message: 'Your heart is genuinely beautiful, and I hope life always treats it gently.',
       isRevealed: false,
       accent: 'purple',
       gradient: 'from-purple-100 to-pink-200',
     },
     {
       id: 3,
-      message: 'To the person who makes my heart fly high! 🌸',
+      message: 'You’re one of those rare people who make life a little warmer just by being in it. 🤍 🌸',
       isRevealed: false,
       accent: 'rose',
       gradient: 'from-rose-100 to-amber-100',
     },
     {
       id: 4,
-      message: `I'm so lucky to have you in my life, ${birthdayGirlName}! 💕`,
+      message: `Some friendships are simply meant to stay, and I hope ours is one of them. 💕`,
       isRevealed: false,
       accent: 'pink',
       gradient: 'from-pink-100 to-fuchsia-200',
